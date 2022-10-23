@@ -1,5 +1,6 @@
 // 抽取首页房源展示块
 
+import SectionFooter from "@/components/section-footer";
 import SectionHeader from "@/components/section-header";
 import SectionRooms from "@/components/section-rooms";
 import PropTypes from "prop-types";
@@ -16,6 +17,7 @@ const HomeSectionV1 = memo((props) => {
         itemWidth="25%"
       />
       <SectionRooms roomList={infoData.list} itemWidth="25%" />
+      <SectionFooter />
     </SectionV1Wrapper>
   );
 });

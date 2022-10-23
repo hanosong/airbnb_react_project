@@ -22,3 +22,10 @@ export function getHomeDiscountData(){
         url:"/home/discount"
     })
 }
+
+// 热门推荐
+export function getHomeHotRecommendData(){
+    return hyRequest.get({
+        url: "/home/hotrecommenddest"
+    })
+}
