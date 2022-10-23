@@ -1,3 +1,5 @@
+import IconArrowLeft from "@/assets/svg/icon-arrow-left";
+import IconArrowRight from "@/assets/svg/icon-arrow-right";
 import PropTypes from "prop-types";
 import React, { memo, useEffect } from "react";
 import { useRef } from "react";
@@ -51,15 +53,27 @@ const ScrollView = memo((props) => {
   return (
     <ViewWrapper>
       {showLeft && (
-        <div onClick={(e) => controlClickHandle(false)}>左边的按钮</div>
+        <div
+          className="control left"
+          onClick={(e) => controlClickHandle(false)}
+        >
+          <IconArrowLeft />
+        </div>
       )}
       {showRight && (
-        <div onClick={(e) => controlClickHandle(true)}>右边的按钮</div>
+        <div
+          className="control right"
+          onClick={(e) => controlClickHandle(true)}
+        >
+          <IconArrowRight />
+        </div>
       )}
 
       {/* 使用插槽 */}
-      <div className="scroll-content" ref={scrollContentRef}>
-        {props.children}
+      <div className="scroll">
+        <div className="scroll-content" ref={scrollContentRef}>
+          {props.children}
+        </div>
       </div>
     </ViewWrapper>
   );
