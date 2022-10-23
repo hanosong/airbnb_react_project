@@ -2,12 +2,13 @@ import styled from "styled-components";
 
 // flex-basis => 最小基础宽度
 // flex-basis: 120px;
-// flex-shrink: 0;
+// flex-shrink: 0;  不要压缩
 export const TabsWrapper = styled.div`
-    display: flex;
 
     .item{
         box-sizing: border-box;
+        flex-basis: 120px;
+        flex-shrink: 0;
         padding: 14px 16px;
         margin-right: 16px;
         border-radius: 3px;

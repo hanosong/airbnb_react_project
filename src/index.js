@@ -6,6 +6,7 @@ import { Provider } from 'react-redux';
 import { ThemeProvider } from 'styled-components'; // 主题色
 //自己的导入
 import App from '@/App';
+import "antd/dist/antd.less"
 import './assets/css/index.less';
 // import 'antd/dist/antd.less'  => 也可以这样陪antd
 // @ => src : webpack
