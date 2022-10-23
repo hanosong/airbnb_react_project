@@ -29,3 +29,10 @@ export function getHomeHotRecommendData(){
         url: "/home/hotrecommenddest"
     })
 }
+
+// 向往的地方
+export function getHomeLongforData(){
+    return hyRequest.get({
+        url:"/home/longfor"
+    })
+}
