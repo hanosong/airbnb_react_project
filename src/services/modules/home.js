@@ -36,3 +36,10 @@ export function getHomeLongforData(){
         url:"/home/longfor"
     })
 }
+
+// plus房源
+export function getHomePlusData(){
+    return hyRequest.get({
+        url: '/home/plus'
+    })
+}

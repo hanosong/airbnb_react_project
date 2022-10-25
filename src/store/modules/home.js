@@ -1,7 +1,7 @@
 // 使用rtk的方式
 // 创建代码片段
 // createAsyncThunk 中发送对应的异步请求
-import { getHomeDiscountData, getHomeGoodPriceData, getHomeHighScoreData, getHomeHotRecommendData,getHomeLongforData } from '@/services'
+import { getHomeDiscountData, getHomeGoodPriceData, getHomeHighScoreData, getHomeHotRecommendData,getHomeLongforData, getHomePlusData } from '@/services'
 import {createSlice, createAsyncThunk} from '@reduxjs/toolkit'
 
 // 统一获取home数据  store参数有两个参数
@@ -27,6 +27,9 @@ export const fetchHomeDataAction = createAsyncThunk("fetchdata",  (payload,{disp
     getHomeLongforData().then(res => {
         dispatch(changeLongforInfoAction(res))
     })
+    getHomePlusData().then(res => {
+        dispatch(changePlusInfoAction(res))
+    })
 })
 
 const homeSlice = createSlice({
@@ -38,6 +41,7 @@ const homeSlice = createSlice({
         discountInfo:{},
         recommendInfo:{}, //热门推荐数据
         longforInfo:{},
+        plusInfo:{},
     },
     reducers:{
         changeGoodPriceInfoAction(state,{ payload}) {
@@ -55,7 +59,11 @@ const homeSlice = createSlice({
         },
         changeLongforInfoAction(state, {payload}){
             state.longforInfo = payload
+        },
+        changePlusInfoAction(state,{ payload }){
+            state.plusInfo = payload
         }
+
 
     },
     // 额外的reducer
@@ -73,7 +81,8 @@ export const {
     changeHighScoreInfoAction, 
     changeDiscountInfoAction,
     changeRecommendInfoAction,
-    changeLongforInfoAction
+    changeLongforInfoAction,
+    changePlusInfoAction
 } = homeSlice.actions;
 
 export default homeSlice.reducer

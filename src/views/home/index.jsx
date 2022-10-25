@@ -8,6 +8,7 @@ import HomeSectionV1 from "./c-cpns/home-section-v1";
 import HomeSectionV2 from "./c-cpns/home-section-v2";
 import { isEmptyObject } from "@/utils";
 import HomeLongfor from "./c-cpns/home-longfor";
+import HomeSectionV3 from "./c-cpns/home-section-v3";
 
 const Home = memo(() => {
   /**从redux中获取数据 */
@@ -17,6 +18,7 @@ const Home = memo(() => {
     discountInfo,
     recommendInfo,
     longforInfo,
+    plusInfo,
   } = useSelector(
     (state) => ({
       goodPriceInfo: state.home.goodPriceInfo,
@@ -24,6 +26,7 @@ const Home = memo(() => {
       discountInfo: state.home.discountInfo,
       recommendInfo: state.home.recommendInfo,
       longforInfo: state.home.longforInfo,
+      plusInfo: state.home.plusInfo,
     }),
     shallowEqual
   ); // shallowEqual只有发生改变进行浅拷贝的时候才要获取数据，才需要重新渲染
@@ -63,6 +66,7 @@ const Home = memo(() => {
         {isEmptyObject(highScoreInfo) && (
           <HomeSectionV1 infoData={highScoreInfo} />
         )}
+        {isEmptyObject(plusInfo) && <HomeSectionV3 infoData={plusInfo} />}
         {/* <div className="good-price">
           <SectionHeader title={goodPriceInfo.title} />
           <SectionRooms roomList={goodPriceInfo.list} />
