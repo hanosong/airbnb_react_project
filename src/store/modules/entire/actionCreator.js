@@ -28,11 +28,18 @@ export const fetchRommListAction = (page = 0) => {
     */
    // 写法2
    return async (dispatch,getState) => {
-    // 根据页码获取最新的数据
-    const currentPage = getState().entire.currentPage
-    const res = await getEntireRoomList(currentPage * 20); //  getEntireRoomList(0)这个0不能写死
+    // 0. 修改currentPage
+    dispatch(changeCurrentPageAction(page = 0))
+
+
+    // 1.根据页码获取最新的数据
+    // const currentPage = getState().entire.currentPage
+    // const res = await getEntireRoomList(currentPage * 20); //  getEntireRoomList(0)这个0不能写死
     
-    // 获取到最新的数据，保存redux的store中
+    // 当写了第0步之后
+    const res = await getEntireRoomList(page * 20);
+    
+    // 2.获取到最新的数据，保存redux的store中
     const rommList = res.list;
     const totalCount = res.totalCount;
     dispatch(changeRoomListAction(rommList)); // 保存到store
