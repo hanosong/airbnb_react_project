@@ -17,6 +17,11 @@ export const changeTotalCountAction = (totalCount) => ({ // 返回对象
     totalCount,
 })
 
+export const changeIsLoadingAction = (isLoading) => ({
+    type: actionTypes.CHANGE_IS_LOADING,
+    isLoading,
+})
+
 export const fetchRommListAction = (page = 0) => {
     // 新的函数 会被自动调用
     /** 写法1 
@@ -31,6 +36,8 @@ export const fetchRommListAction = (page = 0) => {
     // 0. 修改currentPage
     dispatch(changeCurrentPageAction(page = 0))
 
+    // 发送网络请求开始时切换标志位
+    dispatch(changeIsLoadingAction(true));
 
     // 1.根据页码获取最新的数据
     // const currentPage = getState().entire.currentPage
@@ -38,12 +45,15 @@ export const fetchRommListAction = (page = 0) => {
     
     // 当写了第0步之后
     const res = await getEntireRoomList(page * 20);
-    
+
+    //发送网络请求完成时切换标志位
+    dispatch(changeIsLoadingAction(false));
     // 2.获取到最新的数据，保存redux的store中
     const rommList = res.list;
     const totalCount = res.totalCount;
     dispatch(changeRoomListAction(rommList)); // 保存到store
     dispatch(changeTotalCountAction(totalCount)); // 保存到store
+
 
    }
 }

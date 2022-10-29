@@ -1,18 +1,21 @@
 import React, { memo } from "react";
 import Pagination from "@mui/material/Pagination";
 import { PaginationWrapper } from "./style";
-import { useDispatch, useSelector } from "react-redux";
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import {
   changeCurrentPageAction,
   fetchRommListAction,
 } from "@/store/modules/entire/actionCreator";
 
 const EntirePagination = memo(() => {
-  const { totalCount, currentPage, roomList } = useSelector((state) => ({
-    totalCount: state.entire.totalCount,
-    currentPage: state.entire.currentPage,
-    roomList: state.entire.roomList,
-  }));
+  const { totalCount, currentPage, roomList } = useSelector(
+    (state) => ({
+      totalCount: state.entire.totalCount,
+      currentPage: state.entire.currentPage,
+      roomList: state.entire.roomList,
+    }),
+    shallowEqual
+  );
   const totalPage = Math.ceil(totalCount / 20); // 总页数：超出的数据必须多一页，不能向下取整
   const startCount = currentPage * 20 + 1;
   const endCount = (currentPage + 1) * 20;

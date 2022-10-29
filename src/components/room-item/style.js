@@ -37,6 +37,7 @@ export const ItemWrapper = styled.div`
         top: 0;
         width: 100%;
         height:100%;
+        object-fit: cover; // 保持原来宽高比的情况下，填满盒子
     }
 
     .desc {
