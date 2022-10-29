@@ -20,6 +20,9 @@ const EntirePagination = memo(() => {
   /** 事件处理的逻辑*/
   const dispatch = useDispatch();
   function pageChangeHandle(event, pageCount) {
+    // 换页时，回到顶部
+    window.scrollTo(0, 0);
+
     // 更新最新的页码： redux => currentPage 派发action
     /** 写法1
      *  dispatch(changeCurrentPageAction(pageCount - 1));
