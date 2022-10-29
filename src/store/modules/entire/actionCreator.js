@@ -17,7 +17,7 @@ export const changeTotalCountAction = (totalCount) => ({ // 返回对象
     totalCount,
 })
 
-export const fetchRommListAction = () => {
+export const fetchRommListAction = (page = 0) => {
     // 新的函数 会被自动调用
     /** 写法1 
     return dispatch => {
@@ -36,7 +36,7 @@ export const fetchRommListAction = () => {
     const rommList = res.list;
     const totalCount = res.totalCount;
     dispatch(changeRoomListAction(rommList)); // 保存到store
-    dispatch(changeRoomListAction(totalCount)); // 保存到store
+    dispatch(changeTotalCountAction(totalCount)); // 保存到store
 
    }
 }
