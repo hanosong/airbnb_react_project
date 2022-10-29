@@ -1,11 +1,21 @@
+import * as actionTypes from './constans'
 
-const initialState = {
-    currentPage:3
+
+const initialState = { // 需要保存的数据初始化
+    currentPage: 0 ,// 当前页码
+    roomList: [], // 房间列表
+    totalCount: 0 // 总数据个数 -- 房间总数
 }
 
 function reducer(state = initialState,action) {
     switch(action.type){
-        default:
+        case actionTypes.CHANGE_CURRENT_PAGE:
+            return {...state,currentPage: action.currentPage}
+        case actionTypes.CHANGE_ROOM_LIST:
+            return {...state,roomList:action.roomList}
+        case actionTypes.CHANGE_TOTAL_COUNT:
+            return { ...state,totalCount: action.totalCount}
+            default:
         return state
     }
 }
