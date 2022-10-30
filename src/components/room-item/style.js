@@ -83,6 +83,7 @@ export const ItemWrapper = styled.div`
       }
     }
 
+    // 指示器小点的wrapper宽度
     .indicator {
       position: absolute;
       z-index: 9;
@@ -90,13 +91,13 @@ export const ItemWrapper = styled.div`
       left: 0;
       right: 0;
       width: 30%;
-      margin: 0 auto;
+      margin: 0 auto; //居中
 
       .item {
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 14.29%;
+        width: 14.29%; //总共显示7个dot
 
         .dot {
           width: 6px;
@@ -105,8 +106,10 @@ export const ItemWrapper = styled.div`
           border-radius: 50%;
 
           &.active {
+            // 放大dot
             width: 8px;
             height: 8px;
+            /* background-color: red; */
           }
         }
       }
