@@ -9,7 +9,7 @@ import Indicator from "@/base-ui/indicator";
 import classNames from "classnames";
 
 const RoomItem = memo((props) => {
-  const { itemData, itemWidth = "25%" } = props;
+  const { itemData, itemWidth = "25%", itemClick } = props;
   const [selectIndex, setSelectIndex] = useState(0);
   const sliderRef = useRef();
   /**  事件处理的逻辑*/
@@ -22,6 +22,10 @@ const RoomItem = memo((props) => {
     if (newIndex < 0) newIndex = length - 1;
     if (newIndex > length - 1) newIndex = 0;
     setSelectIndex(newIndex);
+  }
+
+  function itemClickHandle() {
+    if (itemClick) itemClick(itemData); // 首页点击图片不让它跳转 => 把方法放到外面
   }
 
   // 子元素赋值
@@ -73,6 +77,7 @@ const RoomItem = memo((props) => {
     <ItemWrapper
       verifyColor={itemData?.verify_info?.text_color || "#39576a"}
       itemWidth={itemWidth}
+      onClick={itemClickHandle}
     >
       <div className="inner">
         {/* 首页还是轮播图？ 判断 */}
