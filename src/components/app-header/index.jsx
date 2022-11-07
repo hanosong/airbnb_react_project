@@ -7,9 +7,15 @@ import { HeaderWrapper } from "./style";
 const AppHeader = memo(() => {
   return (
     <HeaderWrapper>
-      <HeaderLeft />
-      <HeaderCenter />
-      <HeaderRight />
+      <div className="content">
+        <div className="top">
+          <HeaderLeft />
+          <HeaderCenter />
+          <HeaderRight />
+        </div>
+      </div>
+      <div className="search-area"></div>
+      <div className="cover"></div>
     </HeaderWrapper>
   );
 });
