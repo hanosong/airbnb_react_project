@@ -1,44 +1,50 @@
 import PropTypes from "prop-types";
-import React, { memo, useState, useEffect } from "react";
+import React, { memo, useEffect, useState } from "react";
 import { CSSTransition, SwitchTransition } from "react-transition-group";
 
 import IconArrowLeft from "@/assets/svg/icon-arrow-left";
 import IconArrowRight from "@/assets/svg/icon-arrow-right";
 import IconClose from "@/assets/svg/icon-close";
 import { BrowserWrapper } from "./style";
-import IconTriangelArrowBottom from "@/assets/svg/icon_triangle_arrow_bottom";
+import IconTriangleArrowBottom from "@/assets/svg/icon_triangle_arrow_bottom";
 import Indicator from "../indicator";
 import classNames from "classnames";
-import IconTriangleArrowTop from "@/assets/svg/icon_triangle-arrow-top";
+import IconTriangleArrowTop from "@/assets/svg/icon_triangle_arrow_top";
 
 const PictureBrowser = memo((props) => {
   const { pictureUrls, closeClick } = props;
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isNext, setIsNedxt] = useState(true);
+  const [isNext, setIsNext] = useState(true);
   const [showList, setShowList] = useState(true);
-  // 当图片浏览器展示出来时,需要让滚动的功能消失
+
+  // 当图片浏览器展示出来时, 滚动的功能消失
   useEffect(() => {
-    document.body.style.overflow = "hidden"; // 默认是auto,超出部分会有滚动条
-    setIsNedxt(isNext);
+    document.body.style.overflow = "hidden";
+    setIsNext(isNext);
     return () => {
       document.body.style.overflow = "auto";
     };
   }, []);
 
-  /** 事件监听*/
+  /** 事件监听的逻辑 */
   function closeBtnClickHandle() {
     if (closeClick) closeClick();
   }
 
   function controlClickHandle(isNext = true) {
-    const newIndex = isNext ? currentIndex + 1 : currentIndex - 1;
-    // 越界判断
+    let newIndex = isNext ? currentIndex + 1 : currentIndex - 1;
     if (newIndex < 0) newIndex = pictureUrls.length - 1;
     if (newIndex > pictureUrls.length - 1) newIndex = 0;
 
     setCurrentIndex(newIndex);
-    setIsNedxt(isNext); // 记录
+    setIsNext(isNext);
   }
+
+  function bottomItemClickHandle(index) {
+    setIsNext(index > currentIndex);
+    setCurrentIndex(index);
+  }
+
   return (
     <BrowserWrapper isNext={isNext} showList={showList}>
       <div className="top">
@@ -52,17 +58,15 @@ const PictureBrowser = memo((props) => {
             <IconArrowLeft width="77" height="77" />
           </div>
           <div className="btn right" onClick={(e) => controlClickHandle(true)}>
-            <IconArrowRight width="77" height="77/" />
+            <IconArrowRight width="77" height="77" />
           </div>
         </div>
         <div className="picture">
-          {/* in-out=> 先进入再做动画 */}
           <SwitchTransition mode="in-out">
-            {/* 通过key的不同来切换动画,根据className来给过渡动画,timeout过渡动画时间 */}
             <CSSTransition
               key={pictureUrls[currentIndex]}
               classNames="pic"
-              timeout={150}
+              timeout={200}
             >
               <img src={pictureUrls[currentIndex]} alt="" />
             </CSSTransition>
@@ -74,14 +78,14 @@ const PictureBrowser = memo((props) => {
           <div className="desc">
             <div className="count">
               <span>
-                {currentIndex + 1} / {pictureUrls.length} :
+                {currentIndex + 1}/{pictureUrls.length}:
               </span>
-              <span>room apartment 图片{currentIndex + 1}</span>
+              <span>room apartment图片{currentIndex + 1}</span>
             </div>
             <div className="toggle" onClick={(e) => setShowList(!showList)}>
               <span>{showList ? "隐藏" : "显示"}照片列表</span>
               {showList ? (
-                <IconTriangelArrowBottom />
+                <IconTriangleArrowBottom />
               ) : (
                 <IconTriangleArrowTop />
               )}
@@ -96,8 +100,7 @@ const PictureBrowser = memo((props) => {
                       active: currentIndex === index,
                     })}
                     key={item}
-                    // 点击小图片,切换大图片
-                    onClick={(e) => setCurrentIndex(index)}
+                    onClick={(e) => bottomItemClickHandle(index)}
                   >
                     <img src={item} alt="" />
                   </div>
