@@ -1,5 +1,6 @@
 import { getEntireRoomList } from "@/services/modules/entire";
 import { fetchRommListAction } from "@/store/modules/entire/actionCreator";
+import { changeHeaderConfigAction } from "@/store/modules/main";
 import React, { memo, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import EntireFilter from "./c-cpns/entire-filter";
@@ -18,6 +19,7 @@ const Entire = memo(() => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchRommListAction());
+    dispatch(changeHeaderConfigAction({ isFixed: true }));
   }, [dispatch]);
   return (
     <EntireWrapper>

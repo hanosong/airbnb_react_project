@@ -9,6 +9,7 @@ import HomeSectionV2 from "./c-cpns/home-section-v2";
 import { isEmptyObject } from "@/utils";
 import HomeLongfor from "./c-cpns/home-longfor";
 import HomeSectionV3 from "./c-cpns/home-section-v3";
+import { changeHeaderConfigAction } from "@/store/modules/main";
 
 const Home = memo(() => {
   /**从redux中获取数据 */
@@ -35,6 +36,7 @@ const Home = memo(() => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchHomeDataAction()); // fetchHomeDataAction也可以传参，参数会在createAsyncThunk回调函数中被接收
+    dispatch(changeHeaderConfigAction({ isFixed: true })); // 首页配置
   }, [dispatch]);
   return (
     <HomeWrapper>
