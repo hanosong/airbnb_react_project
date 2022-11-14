@@ -6,6 +6,7 @@ const mainSlice = createSlice({
   initialState: {
     headerConfig: {
       isFixed: false, // 固定定位
+      topAlpha: false, // 透明度
     },
   },
   reducers: {

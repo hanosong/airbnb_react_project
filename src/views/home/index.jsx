@@ -36,7 +36,7 @@ const Home = memo(() => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchHomeDataAction()); // fetchHomeDataAction也可以传参，参数会在createAsyncThunk回调函数中被接收
-    dispatch(changeHeaderConfigAction({ isFixed: true })); // 首页配置
+    dispatch(changeHeaderConfigAction({ isFixed: true, topAlpha: true })); // 首页配置
   }, [dispatch]);
   return (
     <HomeWrapper>

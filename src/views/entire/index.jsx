@@ -19,7 +19,7 @@ const Entire = memo(() => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchRommListAction());
-    dispatch(changeHeaderConfigAction({ isFixed: true }));
+    dispatch(changeHeaderConfigAction({ isFixed: true, topAlpha: false }));
   }, [dispatch]);
   return (
     <EntireWrapper>

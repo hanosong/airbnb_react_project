@@ -20,6 +20,7 @@ const SearchTabs = memo((props) => {
             onClick={(e) => itemClickHandle(index)}
           >
             <span className="text">{item}</span>
+            <span className="bottom"></span>
           </div>
         );
       })}
