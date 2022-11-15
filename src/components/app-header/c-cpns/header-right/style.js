@@ -27,6 +27,10 @@ export const RightWrapper = styled.div`
   .btns {
     display: flex;
     box-sizing: content-box;
+    color: ${(props) =>
+      props.theme.isAlpha
+        ? "#fff"
+        : props.theme.text.primaryColor}; // 背景透明时，字白色
     .btn {
       box-sizing: content-box;
       height: 18px;
@@ -36,7 +40,8 @@ export const RightWrapper = styled.div`
       cursor: pointer;
 
       &:hover {
-        background-color: #f5f5f5;
+        background-color: ${(props) =>
+          props.theme.isAlpha ? "rgba(255,255,255, .1)" : "#f5f5f5"};
       }
     }
   }

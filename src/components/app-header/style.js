@@ -3,8 +3,9 @@ import styled from "styled-components";
 
 // 封装对应的组件
 export const HeaderWrapper = styled.div`
+  /* display: flex;
   align-items: center;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #eee; */
 
   &.fixed {
     position: fixed;
@@ -15,12 +16,15 @@ export const HeaderWrapper = styled.div`
   }
   // 把上面部分的高度定死
   .content {
-    position: absolute;
+    position: relative;
     z-index: 19;
-    transition: all 250ms ease;
+    transition: all 250ms ease; // 切换时的动画
     background-color: ${(props) =>
-      props.theme.isAlpha ? "rgba(255,255,255,0)" : "rgba(255,255,255,1)"};
+      props.theme.isAlpha
+        ? "rgba(255,255,255,0)"
+        : "rgba(255,255,255,1)"}; // 1:不透明
     border-bottom: 1px solid #eee;
+    // 切换时的分割线
     border-bottom-color: ${(props) =>
       props.theme.isAlpha ? "rgba(233,233,233,0)" : "rgba(233,233,233,1)"};
 
