@@ -13,5 +13,4 @@ const store = configureStore({
   },
 });
 
-// 直接导出是不会生效的，需要在index.js中导入provider
 export default store;

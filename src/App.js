@@ -1,5 +1,5 @@
-import React, { memo, useEffect } from "react";
-import { Route, useLocation, useRoutes } from "react-router-dom";
+import React, { memo } from "react";
+import { useRoutes } from "react-router-dom";
 
 import AppFooter from "./components/app-footer";
 import AppHeader from "./components/app-header";

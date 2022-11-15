@@ -5,32 +5,23 @@ import React, { memo, useEffect, useState } from "react";
 import { RightWrapper } from "./style";
 
 const HeaderRight = memo(() => {
-  /** 定义组件内部的状态 */
   const [showPanel, setShowPanel] = useState(false);
-
-  /**副作用代码 */
   useEffect(() => {
     function windowHandleClick() {
       setShowPanel(false);
     }
-    window.addEventListener(
-      "click",
-      windowHandleClick,
-      true // 使用第二个参数， 设置事件冒泡为捕获(防止无法弹出)
-    );
+    window.addEventListener("click", windowHandleClick, true);
 
     return () => {
       window.removeEventListener("click", windowHandleClick, true);
     };
   }, []);
 
-  /**事件处理函数 */
   function profileClickHandle() {
     console.log(1);
     setShowPanel(true);
   }
   console.log(showPanel, 2);
-  // 监听window的点击，并关闭弹窗
   return (
     <RightWrapper>
       <div className="btns">
@@ -43,8 +34,6 @@ const HeaderRight = memo(() => {
       <div className="profile" onClick={profileClickHandle}>
         <IconMenu />
         <IconAvatar />
-
-        {/* 点击弹出的小面板 */}
         {showPanel && (
           <div className="panel">
             <div className="top">

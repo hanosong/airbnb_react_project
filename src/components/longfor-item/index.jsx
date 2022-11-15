@@ -7,10 +7,8 @@ const LongforItem = memo((props) => {
   return (
     <ItemWrapper>
       <div className="inner">
-        {/* info => 为了加圆角 */}
         <div className="item-info">
           <img className="cover" src={itemData.picture_url} alt="" />
-          {/* 价格文字部分周围背景为半透明黑色 => 底部背景覆盖 */}
           <div className="bg-cover"></div>
           <div className="info">
             <div className="city">{itemData.city}</div>

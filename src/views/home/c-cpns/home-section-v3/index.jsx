@@ -19,7 +19,6 @@ const HomeSectionV3 = memo((props) => {
           ))}
         </ScrollView>
       </div>
-      {/** 如果子组件中的函数触发作用不同，可以让父传给子一个函数，让子监听这个函数*/}
       <SectionFooter name="plus" />
     </SectionV3Wrapper>
   );

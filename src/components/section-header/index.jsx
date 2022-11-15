@@ -7,7 +7,6 @@ const SectionHeader = memo((props) => {
   return (
     <HeaderWrapper>
       <h2 className="title">{title}</h2>
-      {/* 有值的情况下才展示 */}
       {subtitle && <div className="subtitle">{subtitle}</div>}
     </HeaderWrapper>
   );

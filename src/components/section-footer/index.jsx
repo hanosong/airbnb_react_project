@@ -9,9 +9,7 @@ const SectionFooter = memo((props) => {
   if (name) {
     showMessage = `显示更多${name}房源`;
   }
-
-  /** 事件处理逻辑*/
-  const navigate = useNavigate(); // 路由跳转
+  const navigate = useNavigate();
   function moreClickHandle() {
     navigate("/entire");
   }

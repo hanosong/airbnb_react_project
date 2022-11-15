@@ -42,19 +42,6 @@ const Home = memo(() => {
     <HomeWrapper>
       <HomeBanner />
       <div className="content">
-        {/* 折扣数据
-        <div className="discount">
-          <SectionHeader
-            title={discountInfo.title}
-            subtitle={discountInfo.subtitle}
-          />
-          <SectionTabs tabNames={tabNames} tabClick={tabClickHandle} />
-          <SectionRooms
-            roomList={discountInfo.dest_list?.[name]}
-            itemWidth="33.333%"
-          />
-        </div> */}
-        {/* 防止组件多次渲染 */}
         {isEmptyObject(discountInfo) && (
           <HomeSectionV2 infoData={discountInfo} />
         )}
@@ -69,17 +56,6 @@ const Home = memo(() => {
           <HomeSectionV1 infoData={highScoreInfo} />
         )}
         {isEmptyObject(plusInfo) && <HomeSectionV3 infoData={plusInfo} />}
-        {/* <div className="good-price">
-          <SectionHeader title={goodPriceInfo.title} />
-          <SectionRooms roomList={goodPriceInfo.list} />
-        </div>
-        <div className="high-score">
-          <SectionHeader
-            title={highScoreInfo.title}
-            subtitle={highScoreInfo.subtitle}
-          />
-          <SectionRooms roomList={highScoreInfo.list} />
-        </div> */}
       </div>
     </HomeWrapper>
   );

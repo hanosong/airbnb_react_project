@@ -12,25 +12,19 @@ const RoomItem = memo((props) => {
   const { itemData, itemWidth = "25%", itemClick } = props;
   const [selectIndex, setSelectIndex] = useState(0);
   const sliderRef = useRef();
-  /**  事件处理的逻辑*/
   function controlClickHandle(isRignt = true, event) {
-    // 上一个面板， 下一个面板
     isRignt ? sliderRef.current.next() : sliderRef.current.prev();
-    // 拿到最新的索引
     let newIndex = isRignt ? selectIndex + 1 : selectIndex - 1;
     const length = itemData.picture_urls.length;
     if (newIndex < 0) newIndex = length - 1;
     if (newIndex > length - 1) newIndex = 0;
     setSelectIndex(newIndex);
-    // 阻止冒泡
     event.stopPropagation();
   }
 
   function itemClickHandle() {
-    if (itemClick) itemClick(itemData); // 首页点击图片不让它跳转 => 把方法放到外面
+    if (itemClick) itemClick(itemData);
   }
-
-  // 子元素赋值
   const pictureElement = (
     <div className="cover">
       <img src={itemData.picture_url} alt={1} />
@@ -75,21 +69,16 @@ const RoomItem = memo((props) => {
   );
 
   return (
-    // verifyColor 从服务器动态获取颜色
     <ItemWrapper
       verifyColor={itemData?.verify_info?.text_color || "#39576a"}
       itemWidth={itemWidth}
       onClick={itemClickHandle}
     >
       <div className="inner">
-        {/* 首页还是轮播图？ 判断 */}
         {itemData.picture_urls ? slideElement : pictureElement}
-
         <div className="desc">{itemData.verify_info.messages.join("·")}</div>
         <div className="name">{itemData.name}</div>
         <div className="price">￥{itemData.price}每晚</div>
-        {/* sx自定义样式 */}
-        {/* ?? => 当为undefined或者null 的时候才会用后面的值 */}
         <div className="bottom">
           <Rating
             name="read-only"
