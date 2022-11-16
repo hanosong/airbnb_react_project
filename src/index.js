@@ -1,4 +1,4 @@
-import React, { Suspense } from "react"; //Suspense 异步加载失败的应急方案
+import React from "react"; //Suspense 异步加载失败的应急方案
 import ReactDOM from "react-dom/client";
 import { HashRouter } from "react-router-dom";
 import { Provider } from "react-redux";

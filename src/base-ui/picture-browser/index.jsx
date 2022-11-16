@@ -24,7 +24,7 @@ const PictureBrowser = memo((props) => {
     return () => {
       document.body.style.overflow = "auto";
     };
-  }, []);
+  }, [isNext]);
 
   /** 事件监听的逻辑 */
   function closeBtnClickHandle() {
