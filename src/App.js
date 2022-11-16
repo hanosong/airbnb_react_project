@@ -13,8 +13,11 @@ const App = memo(() => {
     <div className="app">
       {/* <div className='header'>header</div> */}
       <AppHeader />
-      <div className="page">{useRoutes(routes)}</div>
-      {/* <div className='footer'>footer</div> */}
+      {/* 异步组件包裹suspense */}
+      <Suspense fallback="loading">
+        <div className="page">{useRoutes(routes)}</div>
+        {/* <div className='footer'>footer</div> */}
+      </Suspense>
       <AppFooter />
     </div>
   );
