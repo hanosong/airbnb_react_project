@@ -52,6 +52,7 @@
     ]
   },
   "devDependencies": {
-    "@craco/craco": "^7.0.0-alpha.7"
+    "@craco/craco": "^7.0.0-alpha.7",
+    "webpack-bundle-analyzer": "^4.8.0"
   }
 }
