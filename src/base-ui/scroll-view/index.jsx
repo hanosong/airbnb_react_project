@@ -1,6 +1,5 @@
 import IconArrowLeft from "@/assets/svg/icon-arrow-left";
 import IconArrowRight from "@/assets/svg/icon-arrow-right";
-import PropTypes from "prop-types";
 import React, { memo, useEffect } from "react";
 import { useRef } from "react";
 import { useState } from "react";

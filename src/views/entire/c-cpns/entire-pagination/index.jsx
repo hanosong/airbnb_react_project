@@ -3,7 +3,7 @@ import Pagination from "@mui/material/Pagination";
 import { PaginationWrapper } from "./style";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import {
-  changeCurrentPageAction,
+  //changeCurrentPageAction,
   fetchRommListAction,
 } from "@/store/modules/entire/actionCreator";
 
