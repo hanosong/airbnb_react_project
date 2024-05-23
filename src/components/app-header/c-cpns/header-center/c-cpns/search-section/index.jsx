@@ -12,6 +12,7 @@ const SearchSections = memo((props) => {
               <div className="title">{item.title}</div>
               <div className="desc">{item.desc}</div>
             </div>
+            {/* 每一列的分割线 */}
             {index !== searchInfos.length - 1 && (
               <div className="divider"></div>
             )}
