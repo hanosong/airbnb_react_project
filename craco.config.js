@@ -4,6 +4,9 @@ const CracoLessPlugin = require("craco-less");
 const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
 // 通过node的common.js导出一个对象
 module.exports = {
+  devServer: {
+    port: 3001, // 设置要使用的端口号
+  },
   // 配置less
   plugins: [
     {
